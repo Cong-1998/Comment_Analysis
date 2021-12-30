@@ -6,7 +6,7 @@ def en_emotion(text):
     with bz2.BZ2File('Emotion/en_emotion.pbz2', 'rb') as training_model:
         en_model = cPickle.load(training_model)
 
-    label = en_model.predict(text)
+    label = en_model.predict([text])
     return label
     
 def detect_emotion(df, malaya):
