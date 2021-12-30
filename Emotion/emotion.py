@@ -12,7 +12,8 @@ def en_emotion(text):
 def detect_emotion(df, malaya):
 
     # malay emotion analysis
-    ms_model = malaya.emotion.transformer(model = 'albert')
+    ms_model = malaya.emotion.multinomial()
+    #ms_model = malaya.emotion.transformer(model = 'albert')
     clean = df['clean'].values.tolist()
     ms_emo = ms_model.predict(clean)
     df = df.assign(Emotion = ms_sen)
