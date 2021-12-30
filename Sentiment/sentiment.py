@@ -3,7 +3,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 def en_sentiment(text):
     analyzer = SentimentIntensityAnalyzer()
     sent = analyzer.polarity_scores(text)
-    return sent['compund']
+    return sent['compound']
     
 def detect_sentiment(df, malaya):
     
