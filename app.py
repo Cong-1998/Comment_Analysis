@@ -23,6 +23,9 @@ from Topic.topic import create_WordCloud
 from Language.language import detect_lang
 from Sentiment.sentiment import detect_sentiment
 from Emotion.emotion import detect_emotion
+import os
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # table of content
 class Toc:
