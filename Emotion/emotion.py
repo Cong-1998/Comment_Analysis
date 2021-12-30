@@ -16,7 +16,7 @@ def detect_emotion(df, malaya):
     #ms_model = malaya.emotion.transformer(model = 'albert')
     clean = df['clean'].values.tolist()
     ms_emo = ms_model.predict(clean)
-    df = df.assign(Emotion = ms_sen)
+    df = df.assign(Emotion = ms_emo)
 
     # english emotion analysis
     df.loc[df['Language'] == "en", 'Emotion'] = df['clean'].apply(en_emotion)
