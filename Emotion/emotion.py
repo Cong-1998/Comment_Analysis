@@ -3,7 +3,7 @@ import pickle
 import _pickle as cPickle
 
 def en_emotion(text, model):
-    label = en_model.predict([text])
+    label = model.predict([text])
     string = " ".join(label)
     return string
     
