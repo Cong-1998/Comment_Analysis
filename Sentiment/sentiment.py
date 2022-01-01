@@ -1,8 +1,8 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-def en_sentiment(text):
-    analyzer = SentimentIntensityAnalyzer()
-    sent = analyzer.polarity_scores(text)
+def en_sentiment(text, model):
+    
+    sent = model.polarity_scores(text)
     return sent['compound']
     
 def detect_sentiment(df, malaya):
@@ -14,7 +14,8 @@ def detect_sentiment(df, malaya):
     df = df.assign(Sentiment = ms_sen)
 
     # english sentiment analysis
-    df.loc[df['Language'] == "en", 'Score'] = df['clean'].apply(en_sentiment)
+    analyzer = SentimentIntensityAnalyzer()
+    df.loc[df['Language'] == "en", 'Score'] = df['clean'].apply(en_sentiment, model=analyzer)
     df.loc[df['Score']>=0.05, 'Sentiment']='positive'
     df.loc[(df['Score']<0.05) & (df['Score']>-0.05), 'Sentiment']='neutral'
     df.loc[df['Score']<-0.05, 'Sentiment']='negative'
