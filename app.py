@@ -68,13 +68,16 @@ st.markdown(f""" <style>
     }} </style> """, unsafe_allow_html=True)
 
 # set up title
-st.title("GSDMM Topic Modeling")
+st.title("Text Comment Analysis")
 st.write('\n')
 
 # set up sidebar
 st.sidebar.header("Table of Content")
 toc = Toc()
 toc.placeholder()
+
+# why using
+st.write("Why using [this app](#why-using-this-app)❓")
 
 # upload file
 toc.header("Upload csv file")
@@ -151,14 +154,25 @@ st.write("3. Please select the number of clusters.")
 st.write("4. Please click the 'Run' button.")
 st.write('\n')
 
+# how to covert excel to csv
 st.subheader("CSV file")
 st.write('This video will teach you how to convert excel file to csv file.')
 # Embed a youtube video
 st_player("https://www.youtube.com/watch?v=IBbJzzj5r90")
 st.write('\n')
 
+# stopword
 st.subheader("Stopwords")
 st.write("Stopwords are the words which does not add much meaning to a sentence. They can safely be ignored without sacrificing the meaning of the sentence. For example, the words like ada, apa, dia, a, an, the etc.")
-st.write("*Here are [stopwords](https://github.com/Cong-1998/Cluster/blob/main/stopwords.txt). :point_left:")
+st.write("*Here are [stopwords](https://github.com/Cong-1998/Text_Comment_Analysis/blob/main/stopwords.txt). :point_left:")
+
+# functions
+toc.header("Why Using This App")
+st.write(
+    """    
+- **Clustering of social media comments.**
+- **To determine sentiment of comments.**
+- **To analyze the underlying emotions expressed based on comments.**
+    """)
 
 toc.generate()
