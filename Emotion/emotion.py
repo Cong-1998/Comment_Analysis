@@ -2,12 +2,10 @@ import bz2
 import pickle
 import _pickle as cPickle
 
-def en_emotion(text):
-    with bz2.BZ2File('Emotion/en_emotion.pbz2', 'rb') as training_model:
-        en_model = cPickle.load(training_model)
-
+def en_emotion(text, model):
     label = en_model.predict([text])
-    return label
+    string = " ".join(label)
+    return string
     
 def detect_emotion(df, malaya):
 
@@ -19,7 +17,10 @@ def detect_emotion(df, malaya):
     df = df.assign(Emotion = ms_emo)
 
     # english emotion analysis
-    df.loc[df['Language'] == "en", 'Emotion'] = df['clean'].apply(en_emotion)
+    with bz2.BZ2File('Emotion/en_emotion.pbz2', 'rb') as training_model:
+        en_model = cPickle.load(training_model)
+    
+    df.loc[df['Language'] == "en", 'Emotion'] = df['clean'].apply(en_emotion, model=en_model)
 
     # remove unwanted coulmns
     df = df.drop(['Language', 'clean'], axis = 1)
