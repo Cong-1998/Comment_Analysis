@@ -20,7 +20,7 @@ def detect_sentiment(df, malaya):
     df.loc[df['Score']<-0.05, 'Sentiment']='negative'
 
     # remove unwanted coulmns
-    #df = df.drop(['Score'], axis = 1)
+    df = df.drop(['Score'], axis = 1)
 
     return df
 
