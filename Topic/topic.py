@@ -67,6 +67,7 @@ def processing(data, gensim, malaya, word_tokenize, np, MovieGroupProcess, pd, W
     df1 = df1.str.replace(r'\bmora\b', 'moratorium')
     df1 = df1.str.replace(r'\bni\b', 'ini')
     df1 = df1.str.replace(r'\btu\b', 'itu')
+    df1 = df1.str.replace(r'\balhamdulillah\b', 'terbaik')
 
     # remove unwanted word
     df1 = df1.str.replace('\n', '')
