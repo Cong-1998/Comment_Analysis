@@ -112,7 +112,7 @@ result = st.button("Run")
 if result:
     wc = []
     ans = []
-    st.write("Be patient, need to wait 1 to 2 minutes :smile:")
+    st.write("Be patient, need to wait 1 to 3 minutes :smile:")
     st.write("If raising error, please reduce the number of clusters")
 
     # Topic clustering
