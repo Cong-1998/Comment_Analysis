@@ -60,14 +60,19 @@ def processing(data, gensim, malaya, word_tokenize, np, MovieGroupProcess, pd, W
     df1 = df.str.lower().str.replace('[^\w\s]','')
 
     # change text abbreviations to original word
-    df1 = df1.str.replace(r'\bx\b', 'tidak')
-    df1 = df1.str.replace(r'\btak\b', 'tidak')
-    df1 = df1.str.replace(r'\borg\b', 'orang')
+    df1 = df1.str.replace(r'\balhamdulillah\b', 'alhamdulilah')
     df1 = df1.str.replace(r'\bdgn\b', 'dengan')
+    df1 = df1.str.replace(r'\bgemen\b', 'kerajaan')
+    df1 = df1.str.replace(r'\bk\b', 'okay')
     df1 = df1.str.replace(r'\bmora\b', 'moratorium')
     df1 = df1.str.replace(r'\bni\b', 'ini')
+    df1 = df1.str.replace(r'\borg\b', 'orang')
+    df1 = df1.str.replace(r'\bsapa\b', 'siapa')
+    df1 = df1.str.replace(r'\btak\b', 'tidak')
     df1 = df1.str.replace(r'\btu\b', 'itu')
-    df1 = df1.str.replace('alhamdulillah', 'alhamdulilah')
+    df1 = df1.str.replace(r'\btq\b', 'thank you')
+    df1 = df1.str.replace(r'\bty\b', 'thank you')
+    df1 = df1.str.replace(r'\bx\b', 'tidak')
 
     # remove unwanted word
     df1 = df1.str.replace('\n', '')
