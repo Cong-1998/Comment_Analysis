@@ -6,6 +6,7 @@ streamlit-tags
 streamlit-player
 langdetect
 vaderSentiment
+unidecode
 pandas==1.2.3
 numpy==1.19.5
 nltk==3.5
