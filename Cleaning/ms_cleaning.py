@@ -1,5 +1,6 @@
 import re
 from unidecode import unidecode
+import random
 
 rules_normalizer = {
     'sapa': 'siapa',
