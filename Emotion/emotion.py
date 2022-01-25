@@ -45,12 +45,11 @@ def ms_emotion(list_text, model):
 def detect_emotion(df, malaya):
 
     # malay emotion analysis
-    with bz2.BZ2File('ms_emotion.pbz2', 'rb') as trainin_model:
+    with bz2.BZ2File('Emotion/ms_emotion.pbz2', 'rb') as trainin_model:
         ms_model = cPickle.load(trainin_model)
     
     clean = df['clean'].values.tolist()
     ms_emo = ms_emotion(clean, ms_model)
-    #ms_emo = ms_model.predict(clean)
     df = df.assign(Emotion = ms_emo)
 
     # english emotion analysis
