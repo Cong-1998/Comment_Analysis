@@ -112,11 +112,11 @@ result = st.button("Run")
 if result:
     wc = []
     ans = []
-    st.write("Be patient, need to wait 1 to 3 minutes :smile:")
+    st.write("Be patient, need to wait 3 to 9 minutes :smile:")
     st.write("If raising error, please reduce the number of clusters")
 
     # Topic clustering
-    wc, ans, topic_df = processing(data, gensim, malaya, word_tokenize, np, MovieGroupProcess, pd, WordCloud, int_val, list_stop)
+    wc, ans, topic_df = processing(data, gensim, word_tokenize, np, MovieGroupProcess, pd, WordCloud, int_val, list_stop)
 
     # Detect language
     topic_df['Language'] = topic_df['comment'].apply(detect_lang)
