@@ -57,7 +57,7 @@ def processing(data, gensim, malaya, word_tokenize, np, MovieGroupProcess, pd, W
     df_first = pd.DataFrame(first, columns =['comment'])
 
     # remove characters and turn to lower case
-    df1 = df.str.lower().str.replace('[^\w\s]','')
+    df1 = df.str.lower().str.replace('[^\w\s]',' ')
 
     # change text abbreviations to original word
     df1 = df1.str.replace(r'\balhamdulillah\b', 'alhamdulilah')
