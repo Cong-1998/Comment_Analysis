@@ -3,6 +3,16 @@ import pickle
 import _pickle as cPickle
 from Cleaning.ms_cleaning import cleaning
 
+def remove_stopwords(data, stop_words):
+    output_array=[]
+    for sentence in data:
+        temp_list=[]
+        for word in sentence.split():
+            if word.lower() not in stop_words:
+                temp_list.append(word)
+        output_array.append(' '.join(temp_list))
+    return output_array
+
 def en_emotion(text, model):
     #label = model.predict([text])
     #string = " ".join(label)
@@ -19,6 +29,10 @@ def ms_emotion(list_text, model):
     # clean malay text
     for i in range(len(list_text)):
         list_text[i] = cleaning(list_text[i])
+
+    # remove stopword
+    stop_words = set(open('stopwords.txt').read().splitlines())
+    list_text = remove_stopwords(list_text, stop_words)
     
     list_emo = []
     for text in list_text:
@@ -42,12 +56,13 @@ def ms_emotion(list_text, model):
             
     return list_emo
     
-def detect_emotion(df, malaya):
+def detect_emotion(df):
 
     # malay emotion analysis
     with bz2.BZ2File('Emotion/ms_emotion.pbz2', 'rb') as trainin_model:
         ms_model = cPickle.load(trainin_model)
-    
+    #print(ms_model.predict(["mohdtarmizi hati hitam ."]))
+    #print(ms_model.predict_proba(["mohdtarmizi hati hitam ."]))
     clean = df['clean'].values.tolist()
     ms_emo = ms_emotion(clean, ms_model)
     df = df.assign(Emotion = ms_emo)
