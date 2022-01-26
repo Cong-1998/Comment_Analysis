@@ -51,7 +51,7 @@ def create_topics_dataframe(pd, data_text,  mgp, threshold, topic_dict, lemma_te
             result.at[i, 'Topic'] = 'Other'
     return result
 
-def processing(data, gensim, malaya, word_tokenize, np, MovieGroupProcess, pd, WordCloud, int_val, list_stop):
+def processing(data, gensim, word_tokenize, np, MovieGroupProcess, pd, WordCloud, int_val, list_stop):
     df = data.iloc[:, 0]
     first = df.values.tolist()
     df_first = pd.DataFrame(first, columns =['comment'])
