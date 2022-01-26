@@ -125,7 +125,7 @@ if result:
     sentiment_df = detect_sentiment(topic_df, malaya)
 
     # Detect emotion
-    final_df = detect_emotion(sentiment_df, malaya)
+    final_df = detect_emotion(sentiment_df)
     
     # download labelled file
     st.write("Below is the labelled file, click button to download.")
