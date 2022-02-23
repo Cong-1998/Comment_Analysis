@@ -68,7 +68,7 @@ st.markdown(f""" <style>
     }} </style> """, unsafe_allow_html=True)
 
 # set up title
-st.title("Text Comment Analysis")
+st.title("Comment Analysis")
 st.write('\n')
 
 # set up sidebar
