@@ -38,7 +38,7 @@ def detect_sentiment(df, malaya):
     df.loc[df['Language'] == "en", 'Score'] = df['clean'].apply(en_sentiment, model=analyzer)
     df.loc[df['Score']>=0.05, 'Sentiment']='positive'
     df.loc[(df['Score']<0.05) & (df['Score']>-0.05), 'Sentiment']='neutral'
-    df.loc[df['Score']<-0.05, 'Sentiment']='negative'
+    df.loc[df['Score']<=-0.05, 'Sentiment']='negative'
 
     # remove unwanted coulmns
     df = df.drop(['Score'], axis = 1)
