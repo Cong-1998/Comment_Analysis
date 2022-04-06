@@ -16,14 +16,18 @@ def en_sentiment(text, model):
     sent = model.polarity_scores(text)
     return sent['compound']
 
-def ms_sentiment(list_text, model):
+def ms_sentiment(text, model):
     # clean malay text
-    for i in range(len(list_text)):
-        list_text[i] = cleaning(list_text[i])
+    for i in range(len(text)):
+        text[i] = cleaning(text[i])
 
     # remove stopword
     stop_words = set(open('stopwords.txt').read().splitlines())
-    list_text = remove_stopwords(list_text, stop_words)
+    list_text = remove_stopwords(text, stop_words)
+    
+    # predict sentiment
+    ms_sen = model.predict(list_text)
+    return ms_sen
     
 def detect_sentiment(df, malaya):
     
