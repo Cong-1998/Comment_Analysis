@@ -16,7 +16,7 @@ def en_sentiment(text, model):
     sent = model.polarity_scores(text)
     return sent['compound']
 
-def ms_sentiment(text, model):
+def ms_sentiment(list_text, model):
     # clean malay text
     for i in range(len(list_text)):
         list_text[i] = cleaning(list_text[i])
